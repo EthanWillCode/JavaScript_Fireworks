@@ -15,8 +15,11 @@ function Firework(){
                 this.explode();
             }
         }
+        for (let i =0; i< this.particles.length; i++){
+            this.particles[i].applyForce(gravity);
+            this.particles[i].update();
+        }
     }
-
     this.explode = function(){
         for(let i =0; i<100; i++){
             let p = new Particle(this.firework.pos.x, this.firework.pos.y);
