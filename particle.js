@@ -9,7 +9,7 @@ function Particle(x,y,firework){
         this.vel = createVector(0, random(-8, -15));
     } else {
         this.vel = p5.Vector.random2D();
-        this.vel.mult(random(4,15));
+        this.vel.mult(random(8,20));
     }
     this.acc = createVector(0,0);
 
@@ -25,6 +25,14 @@ function Particle(x,y,firework){
         this.vel.add(this.acc);
         this.pos.add(this.vel);
         this.acc.mult(0);
+    }
+
+    this.done = function(){
+        if(this.lifespan < 0){
+            return true;
+        } else {
+            return false;
+        }
     }
 
     this.show = function() {
