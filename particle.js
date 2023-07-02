@@ -1,15 +1,17 @@
 
 
-function Particle(x,y,firework){
+function Particle(x, y, hu, firework){
 
     this.pos = createVector(x, y, firework);
     this.firework = firework;
     this.lifespan = 255;
+    this.hu = hu;
+
     if(firework){
         this.vel = createVector(0, random(-8, -15));
     } else {
         this.vel = p5.Vector.random2D();
-        this.vel.mult(random(8,20));
+        this.vel.mult(random(2,20));
     }
     this.acc = createVector(0,0);
 
@@ -36,12 +38,13 @@ function Particle(x,y,firework){
     }
 
     this.show = function() {
+        colorMode(HSB)
         if(!firework){
             strokeWeight(2);
-            stroke(255, this.lifespan);
+            stroke(hu, 255, 255, this.lifespan);
         } else {
             strokeWeight(4);
-            stroke(255);
+            stroke(hu, 255, 255);
         }
         point(this.pos.x, this.pos.y)
     }
